@@ -4,10 +4,9 @@
 
 The current review process of submissions to academic conferences is a manual task, typically done by fellow academics and requires long hours of reading. Initial pre-screening of papers must be done to determine if a paper’s content is relevant to a particular conference’s list of relevant topics. For this project, we are interested in automating this screening process to expedite the paper selection procedure, such that relevant papers receive priority for further review by the committee and that papers are sent to researchers with relevant expertise on the paper’s topic.
 
-We will develop this work in two phases of supervised and unsupervised learning. For Supervised Learning we can define the problem: Given an abstract X, perform a classification from Y labels containing the list of relevant topics and a category of not-relevant. For Unsupervised, generate K clusters that represent topics found in a historical set of documents that were accepted to a particular conference in the past. Given this unsupervised model and a new input text, use an embedding-based  similarity score to determine the basis of acceptance. We propose directly comparing supervised and unsupervised learning in order to solve the task of automating conference paper screening.
-
-
 # Problem definition  
+
+We will develop this work in two phases of supervised and unsupervised learning. For Supervised Learning we can define the problem: Given an abstract X, perform a classification from Y labels containing the list of relevant topics and a category of not-relevant. For Unsupervised, generate K clusters that represent topics found in a historical set of documents that were accepted to a particular conference in the past. Given this unsupervised model and a new input text, use an embedding-based  similarity score to determine the basis of acceptance. We propose directly comparing supervised and unsupervised learning in order to solve the task of automating conference paper screening.
 
 # Methods  
 
