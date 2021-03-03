@@ -1,5 +1,9 @@
 #### Authors Ryan Cooper, Cuong Nguyen, Evan Downs, Rhythm M. Syed, Hamna Khan
 
+### Presentation Video:
+
+https://drive.google.com/file/d/18xwnCenKkasaJt0dNkja31UJ53BolkV/view
+
 ### Introduction/Background  
 
 The approval process for academic conference papers is a manual task requiring hours of reading. Initial pre-screening of papers must be done to determine a paper’s relevancy to a conference. This project focuses on automating the pre-screening process, such that relevant papers receive further review while irrelevant papers are disregarded.
