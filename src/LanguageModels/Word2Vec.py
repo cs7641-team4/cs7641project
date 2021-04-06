@@ -16,8 +16,8 @@ class Word2Vec(implements(LanguageModelTranslator)):
     def featurize(self, data, preprocessor, mode='multilabel', remove_unlableled=True, text_key='abstract', primary_label_key='label1', secondary_label_key='label2', neg_sample_class=11):
         features = []
         labels = []
-        
         for row in tqdm(data):
+
             if remove_unlableled == True and row[primary_label_key] == '':
                 continue
 
@@ -37,7 +37,6 @@ class Word2Vec(implements(LanguageModelTranslator)):
 
         features = np.array(features)
         labels = np.array(labels)
-
         return features, labels
 
     def convert(self, words_list, method='average'):
