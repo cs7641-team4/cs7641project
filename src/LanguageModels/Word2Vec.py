@@ -13,12 +13,15 @@ class Word2Vec(implements(LanguageModelTranslator)):
         pass
     
 
-    def featurize(self, data, preprocessor, mode='multilabel', remove_unlableled=True, text_key='abstract', primary_label_key='label1', secondary_label_key='label2', neg_sample_class=11):
+    def featurize(self, data, preprocessor, mode='multilabel', remove_unlableled=True, text_key='abstract', primary_label_key='label1', secondary_label_key='label2', neg_sample_class=11, remove_neg_samples=False):
         features = []
         labels = []
         for row in tqdm(data):
 
             if remove_unlableled == True and row[primary_label_key] == '':
+                continue
+
+            if remove_neg_samples and int(row[primary_label_key]) == neg_sample_class:
                 continue
 
             abstract = row[text_key]
