@@ -1,0 +1,8 @@
+python-interface==1.6.0
+nltk
+numpy
+pandas
+tqdm
+pickle
+gensim
+scikit-learn
