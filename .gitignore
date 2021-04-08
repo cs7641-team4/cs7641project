@@ -2,3 +2,5 @@
 __pycache__/
 data/glove.6B
 tmp/
+.DS_Store
+data/.DS_Store
