@@ -2,3 +2,5 @@
 __pycache__/
 data/glove.6B
 tmp/
+data/arxiv-metadata-oai-snapshot.json
+data/customw2v.p
