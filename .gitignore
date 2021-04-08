@@ -3,6 +3,5 @@ __pycache__/
 data/glove.6B
 tmp/
 data/arxiv-metadata-oai-snapshot.json
-data/customw2v.p
 .DS_Store
 data/.DS_Store
