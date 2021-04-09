@@ -204,11 +204,15 @@ The next steps for Unsupervised learning will be finding additional ways to use 
  
 [1] Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K., “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding”, <i>arXiv e-prints</i>, 2018.
  
-[2] Minaee, S., Kalchbrenner, N., Cambria, E., Nikzad, N., Chenaghlu, M., and Gao, J., “Deep Learning Based Text Classification: A Comprehensive Review”, arXiv e-prints, 2020.
+[2] Minaee, S., Kalchbrenner, N., Cambria, E., Nikzad, N., Chenaghlu, M., and Gao, J., “Deep Learning Based Text Classification: A Comprehensive Review”, arXiv e-prints, 2020.  
+
 [3] Jelodar, H., “Latent Dirichlet Allocation (LDA) and Topic modeling: models, applications, a survey”, arXiv e-prints, 2017.
-[4] Pennington, Jeffrey & Socher, Richard & Manning, Christopher. (2014). GloVe: Global Vectors for Word Representation. EMNLP. 14. 1532-1543. 10.3115/v1/D14-1162. 
-[5] Iz Beltagy, Kyle Lo, & Arman Cohan (2019). SciBERT: Pretrained Language Model for Scientific Text. In EMNLP.
-[6] https://github.com/roamanalytics/mittens
+
+[4] Pennington, Jeffrey & Socher, Richard & Manning, Christopher. (2014). GloVe: Global Vectors for Word Representation. EMNLP. 14. 1532-1543. 10.3115/v1/D14-1162.
+
+[5] Iz Beltagy, Kyle Lo, & Arman Cohan (2019). SciBERT: Pretrained Language Model for Scientific Text. In EMNLP.  
+
+[6] https://github.com/roamanalytics/mittens. 
 
 ## **Appendix**
 ### **A. Data Label Frequencies**
