@@ -1,22 +1,25 @@
 from interface import implements, Interface
+
+from transformers import BertModel, BertTokenizer, AdamW, get_linear_schedule_with_warmup
 from .LanguageModelTranslator import LanguageModelTranslator
 import numpy as np
 import pandas as pd
-from tqdm.notebook import tqdm
+import torch
+from tqdm import tqdm
+class BERT(implements(LanguageModelTranslator)):
+    def __init__(self, path='bert-base-uncased', cuda=False):
+        self.tokenizer = BertTokenizer.from_pretrained(path)
+        self.model = BertModel.from_pretrained(path)
 
-class Word2Vec(implements(LanguageModelTranslator)):
-    def __init__(self, path='../data/glove.6B/glove.6B.200d.txt'):
-        self.model = None
-        self.path = path
+        self.cuda = cuda
 
         self.load_model()
         pass
-    
 
     def featurize(self, data, preprocessor, mode='multilabel', remove_unlableled=True, text_key='abstract', primary_label_key='label1', secondary_label_key='label2', neg_sample_class=11, remove_neg_samples=False):
         features = []
         labels = []
-        for row in data:
+        for row in tqdm(data):
 
             if remove_unlableled == True and row[primary_label_key] == '':
                 continue
@@ -42,30 +45,16 @@ class Word2Vec(implements(LanguageModelTranslator)):
         labels = np.array(labels)
         return features, labels
 
+
     def convert(self, words_list, method='average'):
-        vec = []
-        for word in words_list:
-            try:
-                vec.append(self.model[word.lower()])
-            except:
-                continue
-        
-        if method == 'average':
-            vec = np.array(vec).mean(axis=0)
-            
-        else:
-            raise NotImplementedError
-            
-        return vec
+        tokens = self.tokenizer.encode(' '.join(words_list))
+        input_ids = torch.tensor(tokens).unsqueeze(0)
+
+        if self.cuda:
+            input_ids.cuda()
+        outputs = self.model(input_ids)
+        last_hidden_states = outputs[0]
+        return last_hidden_states.squeeze(0).mean(axis=0).cpu().detach().numpy()
     
     def load_model(self):
-        self.model = {}
-        f = open(self.path, encoding='utf8')
-        for line in f:
-            values = line.split(' ')
-            word = values[0]
-            coefs = np.asarray(values[1:], dtype='float32') 
-            self.model[word] = coefs
-        f.close()
-        
-        
+        pass
