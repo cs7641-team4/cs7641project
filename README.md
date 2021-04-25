@@ -191,18 +191,18 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 
 - *MC-PO - Balanced (Multiclass Classification - Positive Only, Balanced with SMOTE)*
 
-|        Model        | Hyperparameters                                                        | Test Accuracy       |
-|:-------------------:|------------------------------------------------------------------------|---------------------|
-| SVM                 | {'kernel': ['linear', 'rbf'], 'C':[0.01, 0.1, 1], 'gamma': ['scale']}  | 0.41333333333333333 |
-| Gaussian Process    | {'kernel': [1.0 * RBF(1.0)]}                                           | 0.4066666666666667  |
-| Logistic Regression | {'random_state': [0], 'max_iter': [5000]}                              | 0.4733333333333333  |
-| Decision Tree       | {'max_depth': [5]}                                                     | 0.24                |
-| Random Forest       | {'max_depth': [5], 'n_estimators': [10], 'max_features': [1]}          | 0.4266666666666667  |
-| MLP                 | {'alpha': [1], 'max_iter': [5000]}                                     | 0.42                |
-| AdaBoost            | {'n_estimators': [100]}                                                | 0.11333333333333333 |
-| Naive Bayes         | {}                                                                     | 0.4066666666666667  |
-| Bagging Classifier  | {'base_estimator': [SVC()], 'n_estimators': [10], 'random_state': [0]} | 0.44                |
-
+| Language Model               | Hyperparameters                                                                                                                                                     | Best Hyperparameters                                                                                               | Best Test Accuracy     |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|------------------------|
+| SVM                          | {'kernel': ['linear', 'rbf', 'poly', 'sigmoid], 'C':[0.01, 0.1, 1], 'gamma': ['scale', 'auto']}                                                                     | {'C': 1, 'gamma': 'scale', 'kernel': 'linear'}                                                                     | 0.35517241379310344    |
+| Gaussian Process             | {'kernel': [1.0 * RBF(1.0)]}                                                                                                                                        | {'kernel': [1.0 * RBF(1.0)]}                                                                                       | 0.44482758620689655    |
+| Logistic Regression          |                                                                                                                                                                     | {'max_iter': 10000, 'random_state': 0}                                                                             | 0.32413793103448274    |
+| Decision Tree                | {'max_depth': [5, 15, None], 'criterion': ['gini', 'entropy'], 'splitter': ['best', 'random'], 'max_features':[None, 'auto'], 'min_weight_fraction_leaf': [0, 0.1]} | {'criterion': 'entropy', 'max_depth': 15, 'max_features': None, 'min_weight_fraction_leaf': 0, 'splitter': 'best'} | 0.43103448275862066    |
+| Random Forest                | {'max_depth': [5, 15, None], 'n_estimators': [10, 100], 'max_features': [None]}                                                                                     | {'max_depth': None, 'max_features': None, 'n_estimators': 100}                                                     | 0.4413793103448276     |
+| **MLP**                      | {'alpha': [0.001, 0.01, 0.1], 'max_iter': [10000], 'early_stopping': [False, True], 'beta_2': [0.999]}                                                              | **{'alpha': 0.01, 'beta_2': 0.999, 'early_stopping': False, 'max_iter': 10000}**                                   | **0.4482758620689655** |
+| AdaBoost                     | 'AdaBoost': {'n_estimators': [50, 100, 200], 'learning_rate': [0.1, 0.5, 1]}                                                                                        | {'learning_rate': 0.1, 'n_estimators': 200}                                                                        | 0.20344827586206896    |
+| Naive Bayes                  | NaiveBayes': {}                                                                                                                                                     | {}                                                                                                                 | 0.29310344827586204    |
+| Bagging Classifier           | 'BaggingClassifier': {'base_estimator': [SVC()], 'n_estimators': [10], 'random_state': [0]}                                                                         | {'base_estimator': SVC(), 'n_estimators': 10, 'random_state': 0}                                                   | 0.30344827586206896    |
+| Gradient Boosting Classifier | {'learning_rate': [0.1, 0.2, 0.5], 'n_estimators': [100, 500, 1000], 'max_depth': [3, 9, 15]}                                                                       | {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 500, 'n_iter_no_change': 5}                                 | 0.43448275862068964    |
 
 ## **Discussion**
 ### **Language Models**
