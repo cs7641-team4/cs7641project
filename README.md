@@ -214,7 +214,10 @@ In the latter half of this project, we hope to explore transformer based languag
 The next steps for Unsupervised learning will be finding additional ways to use Unsupervised learning models' output as engineered features for the Supervised learning models. This task will be similar to the example discussed previously involving LDA's output for an input into an SVM classifier. KMeans could be another Unsupervised learning model to test in addition to LDA. Work will also be done to see if it is possible to automatically assign a label to an unsupervised learning model's groups or clusters. This semi-supervised automatic labeling would be helpful in providing interpretability to unsupervised learning groupings' for the dataset. TF-IDF and word embedding summarization combined with distance score metrics will be initally tested for this task.
 
 ### **Supervised Learning**
- For the final report, we plan to explore more hyperparameters for each of the classifiers used in the midterm report. We also plan to balance the dataset between the positive classes, through a combination of additional data gathering and exploration with oversampling techniques. Finally, we plan to build a more sophisticated neural network classification model using Pytorch and compare results to traditional machine learning models.
+95% Accuracy for Binary Classification is pretty good.
+ 
+ ## Conclusion
+ In this paper, we demonstrated the feasibility of automatically detecting the topic of an academic paper based on its topic. Using unsupervised methods such as GloVE and BERT, we showed that there is significant linear seperability of embeddings between in-conference samples and out-of-conference samples. Using supervised methods, we have shown that a Multi-Layered Perceptron classifier trained on only around 1000 abstracts can distinguish between in-conference papers and out-of-conference papers with a 95% accuracy rate. 
 
 ## References
  
