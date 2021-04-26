@@ -7,3 +7,5 @@ pickle
 gensim
 scikit-learn
 mittens
+transformers
+torch
