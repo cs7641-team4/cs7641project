@@ -1,11 +1,12 @@
-from interface import implements, Interface
+#from interface import implements, Interface
 from LanguageModels.LanguageModelTranslator import LanguageModelTranslator
 import gensim
 from gensim import corpora
 from gensim import matutils
 import numpy as np
 
-class BagOfWords(implements(LanguageModelTranslator)):
+#class BagOfWords(implements(LanguageModelTranslator)):
+class BagOfWords(LanguageModelTranslator):
     
     def __init__(self,):
         pass

@@ -1,4 +1,4 @@
-from interface import implements, Interface
+#from interface import implements, Interface
 from .LanguageModelTranslator import LanguageModelTranslator
 from .Word2Vec import Word2Vec
 import numpy as np

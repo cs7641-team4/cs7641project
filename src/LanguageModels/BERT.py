@@ -1,4 +1,4 @@
-from interface import implements, Interface
+#from interface import implements, Interface
 
 from transformers import BertModel, BertTokenizer, AdamW, get_linear_schedule_with_warmup
 from .LanguageModelTranslator import LanguageModelTranslator
@@ -6,7 +6,8 @@ import numpy as np
 import pandas as pd
 import torch
 from tqdm import tqdm
-class BERT(implements(LanguageModelTranslator)):
+#class BERT(implements(LanguageModelTranslator)):
+class BERT(LanguageModelTranslator):
     def __init__(self, path='bert-base-uncased', cuda=False):
         self.tokenizer = BertTokenizer.from_pretrained(path)
         self.model = BertModel.from_pretrained(path)

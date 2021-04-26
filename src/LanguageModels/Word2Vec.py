@@ -1,10 +1,11 @@
-from interface import implements, Interface
+#from interface import implements, Interface
 from .LanguageModelTranslator import LanguageModelTranslator
 import numpy as np
 import pandas as pd
 from tqdm.notebook import tqdm
 
-class Word2Vec(implements(LanguageModelTranslator)):
+#class Word2Vec(implements(LanguageModelTranslator)):
+class Word2Vec(LanguageModelTranslator):
     def __init__(self, path='../data/glove.6B/glove.6B.200d.txt'):
         self.model = None
         self.path = path
