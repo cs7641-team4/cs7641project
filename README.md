@@ -241,7 +241,7 @@ We see that SciBERT seem to provide the most separability to the data in all tas
 
 #### **H. Model accuracies for classification**
 
-<!-- TODO: Ryan -->
+In this section we show the results of using the methods described in "Classification in Semantic Space". Notice that each task has 2 sets of values, each representing the latent representation of the class in the semantic space. The first, "class descriptions" is derived from the topic descriptions for each label as described in Appendix B and nothing more. The other, "Semi-supervised k=5" is using the top 5 most representative abstracts averaged as a representation of the class. This represents the case where a conference organizer gives the researchers some sample papers for each class. We compare minimizing two values in the semantic space for class assignment: inverse cosine similarity and euclidean distance.
 
 | Using Inverse Cosine Similarity | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-O (class descriptions) | MC-O (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
 |---------------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
@@ -252,7 +252,6 @@ We see that SciBERT seem to provide the most separability to the data in all tas
 | BERT                            | 0.1462                    | 0.4565                            | 0.2826                    | 0.32                              | 0.7379                 | 0.8151                          |
 | SCIBERT                         | 0.0813                    | 0.1758                            | 0.1573                    | 0.34                              | 0.742                  | 0.9110                           |
 
-<!-- TODO: Ryan -->
 
 | Using Euclidian Distance | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-O (class descriptions) | MC-O (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
 |--------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
@@ -262,6 +261,8 @@ We see that SciBERT seem to provide the most separability to the data in all tas
 | Finetuned GLOVE          | 0.0586                    | 0.4613                            | 0.1133                    | 0.3053                            | 0.7186                 | 0.7489                          |
 | BERT                     | 0.1434                    | 0.4544                            | 0.2773                    | 0.3173                            | 0.7489                 | 0.8227                          |
 | SCIBERT                  | 0.0924                    | 0.5765                            | 0.1786                    | 0.3373                            | 0.7524                 | 0.9034                          |
+
+Notice that we attain accuracies comparable to supervised with SOTA language models. 
 
 ## **Supervised Learning**
 #### **Model accuracies**
@@ -335,7 +336,11 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 
 ## **Discussion**
 ### **Language Models**
-<!-- TODO: Ryan -->
+
+We presented a variety of language models used to generate semantic spaces for learning. We explore trivial methods like bag of words, and word2vec techniques including training our own model over our corpus, to even evaluating pretrained and finetuned versions of GloVE. Finally, we look at modern language models like BERT and SCIBERT as representing the most feature-rich semantic spaces. After evaluation, we found that SciBERT produced the most feature-rich semantic space. We use this model to show the SOTA limits of our dataset.
+
+<!-- TODO: Add more here? -->
+
 
 ### **Unsupervised Learning**
 
