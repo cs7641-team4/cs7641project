@@ -1,5 +1,5 @@
 from .Preprocessor import Preprocessor
-from interface import implements, Interface
+#from interface import implements, Interface
 
 import re
 import nltk
@@ -14,7 +14,8 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 
-class LemmatizerPreprocessor(implements(Preprocessor)):
+#class LemmatizerPreprocessor(implements(Preprocessor)):
+class LemmatizerPreprocessor(Preprocessor):
     def __init__(self,):
         self.lemmatizer = WordNetLemmatizer() 
         self.stop_words = set(stopwords.words('english')) # set stopwords to english 
