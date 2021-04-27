@@ -340,12 +340,14 @@ A semi-supervised approach for labeling unsupervised cluster outputs is develope
 
 ### **Supervised Learning**
 
+<!-- TODO: Update with new discussion -->
+
 We found that our best results were sourced in the binary classification (BC) task. We achieved our highest test accuracy using neural networks, particularly a Multi-layer Perceptron classifier, which achieved almost 95% test accuracy. Our model was thus able to successfully differentiate between papers that were included in the EMNLP 2020 conference and those that were ultimately excluded from it. This would be valuable in that our model can screen out irrelevant papers from the pool of papers submitted to a given conference with high accuracy, and thus reduce some element of required human consideration. 
 
 The more complex task of multiclass classification yielded lower results, as expected. For full multiclass classification (MC-F) with all classes, the best test accuracy of about 67% was achieved by our linear regression model. Thus, our model was able to classify the given papers into the eleven classes according to their topic with mid-level accuracy. We should note that this classification included the negative samples class (Class 11). An effort to classify papers according to only positive sample classes was done in the following task of MC-PO, in which the average accuracy decreased further. The best test accuracy for the MC-PO task was achieved by the Naive Bayes classifier, with a value of 44%. This reveals that about a third of the accurate classification that was done in the MC-F task was sourced in classifying papers into the negative class. An effort to balance the dataset for the positive classes such that all classes contain the same number of samples did not provide significant improvement. This was reflected in our results of the MC-PO Balanced task after dataset balancing via SMOTE, where our neural network MLP model achieved the best test accuracy of about 45%. 
  
 ## **Conclusion**
-In this paper, we demonstrated the feasibility of automatically detecting the topic of an academic paper based on its topic. Using unsupervised methods such as GloVE and BERT, we showed that there is significant linear seperability of embeddings between in-conference samples and out-of-conference samples. Using supervised methods, we have shown that a Multi-Layered Perceptron classifier trained on only around 1000 abstracts can distinguish between in-conference papers and out-of-conference papers with a 95% accuracy rate. Future work could be done to improve accuracy of multi-class classification to achieve more promising topic classification of papers. 
+In this project, we demonstrated the feasibility of automatically detecting the topic of an academic paper based on its topic. Using unsupervised methods such as GloVE and BERT, we showed that there is significant linear seperability of embeddings between in-conference samples and out-of-conference samples. Using supervised methods, we have shown that a Multi-Layered Perceptron classifier trained on only around 1000 abstracts can distinguish between in-conference papers and out-of-conference papers with a 95% accuracy rate. Future work could be done to improve accuracy of multi-class classification to achieve more promising topic classification of papers. 
 
 ## References
  
@@ -371,15 +373,15 @@ In this paper, we demonstrated the feasibility of automatically detecting the to
 ### **B. NLP Topics** 
 
 | Class | Topic Name | Topic Description | | |
-|---------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|---|---|
-| Class1  | Linguistics              | Syntax, Phonology, Morphology and Word Segmentation, Linguistic Theories, Cognitive Modeling and Psycholinguistics, Discourse and Pragmatics |   |   |
-| Class2  | Text_Generation          | Generation & Summarization & Machine Translation and Multilinguality,                                                                        |   |   |
-| Class3  | Sentiment_Analysis       | Sentiment Analysis, Stylistic Analysis, and Argument Mining                                                                                  |   |   |
-| Class4  | ML_for_NLP               | Machine Learning for NLP and Interpretability and Analysis of Models for NLP                                                                 |   |   |
-| Class5  | Q&A                      | Dialogue, Speech and Interactive Systems + Question Answering                                                                                |   |   |
-| Class6  | NLP Applications         | NLP Applications, Language Grounding to Vision, Robotics and Beyond                                                                          |   |   |
-| Class7  | Social_Science           | Computational Social Science and Social Media                                                                                                |   |   |
-| Class8  | Information Extraction   | Information Extraction & Information Retrieval and Text Mining                                                                               |   |   |
-| Class9  | Speech                   | Speech and Multimodality                                                                                                                     |   |   |
-| Class10 | Resources and Evaluation | Resources and Evaluation                                                                                                                     |   |   |
-| Class11 | Negative Samples         |                                                                                                                                              |   |   |
+|---------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| Class1  | Linguistics              | Syntax, Phonology, Morphology and Word Segmentation, Linguistic Theories, Cognitive Modeling and Psycholinguistics, Discourse and Pragmatics |
+| Class2  | Text_Generation          | Generation & Summarization & Machine Translation and Multilinguality,                                                                        |
+| Class3  | Sentiment_Analysis       | Sentiment Analysis, Stylistic Analysis, and Argument Mining                                                                                  |
+| Class4  | ML_for_NLP               | Machine Learning for NLP and Interpretability and Analysis of Models for NLP                                                                 |
+| Class5  | Q&A                      | Dialogue, Speech and Interactive Systems + Question Answering                                                                                |
+| Class6  | NLP Applications         | NLP Applications, Language Grounding to Vision, Robotics and Beyond                                                                          |
+| Class7  | Social_Science           | Computational Social Science and Social Media                                                                                                |
+| Class8  | Information Extraction   | Information Extraction & Information Retrieval and Text Mining                                                                               |
+| Class9  | Speech                   | Speech and Multimodality                                                                                                                     |
+| Class10 | Resources and Evaluation | Resources and Evaluation                                                                                                                     |
+| Class11 | Negative Samples         |                                                                                                                                              |
