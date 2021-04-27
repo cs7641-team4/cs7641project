@@ -86,13 +86,13 @@ The visualizations for the topic distributions of LDA with 3 topics and for LDA 
 
 #### **B. K-means**
 
-<img src="/figures/Kmeans_elbow.png" alt="" width="600" heigh="400"/>
+<img src="figures/Kmeans_elbow.png" alt="" width="600" heigh="400"/>
 
 A K-means model is developed using the custom 50 dimensional word2vec representations of the dataset. The above figure shows the sum of squared distances for a range of cluster values. Using the elbow method approximation there appears to be an elbow either at 2 clusters or 3 clusters since after those clusters there are not significant improvements in the sum of squared distance metric. The silhouette coefficient can be used to further show the optimal number of clusters.
 
-<img src="/figures/Kmeans 2 clusters.png" alt="" width="600" heigh="400"/>
+<img src="figures/Kmeans 2 clusters.png" alt="" width="600" heigh="400"/>
 
-<img src="/figures/Kmeans_11_clusters.png" alt="" width="600" heigh="400"/>
+<img src="figures/Kmeans_11_clusters.png" alt="" width="600" heigh="400"/>
 
 | Number of Clusters | Silhoutte Coefficient |
 |---|---|
@@ -113,9 +113,9 @@ Two silhouettes are shown above corresponding to K-means with 2 clusters and K-m
 
 #### **C. Gaussian Mixture Model**
 
-<img src="/figures/GMM 2 components.png" alt="" width="600" heigh="400"/>
+<img src="figures/GMM 2 components.png" alt="" width="600" heigh="400"/>
 
-<img src="/figures/GMM 11 components.png" alt="" width="600" heigh="400"/>
+<img src="figures/GMM 11 components.png" alt="" width="600" heigh="400"/>
 
 | Number of Clusters | Silhoutte Coefficient |
 |---|---|
