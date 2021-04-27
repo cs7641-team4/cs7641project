@@ -186,6 +186,15 @@ These 2d and 3d visualizations are intended to represent a projection from the h
 
 ![](https://drive.google.com/uc?export=view&id=14xUpW-Bl9IjRnCx7UUVMb-LsywijpJn7)
 
+- *BERT*
+
+<!-- TODO: Ryan -->
+
+- *SciBERT*
+
+<!-- TODO: Ryan -->
+
+
 #### **G. Language Model Comparison**
 
 In order to understand the importance of the feature space we choose from various language models, we look at a baseline classification model, support vector machine for classification with rbf kernel, and compare the train and test (33% of the dataset) accuracies. We will explore optimizing the supervised techniques later, but let this serve as a comparison of each language models expressiveness.
