@@ -136,6 +136,27 @@ In order to understand the importance of the feature space we choose from variou
 
 We see that GloVe-based models seem to provide the most separability to the data in both problems. 
 
+#### Model accuracies for classification
+
+| Using Inverse Cosine Similarity | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
+|--------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
+| CustomWord2Vec 13d | 0.1186                    | 0.2133                            | 0.6972                 | 0.6227                          |
+| CustomWord2Vec 50d | 0.1106                    | 0.2093                            | 0.6896                 | 0.6131                          |
+| GLOVE              | 0.1026                    | 0.3266                            | 0.6944                 | 0.7006                          |
+| Finetuned GLOVE    | 0.1026                    | 0.3253                            | 0.6979                 | 0.7096                          |
+| BERT               | **0.2826**                    | 0.3200                            | 0.7379                 | 0.8151                          |
+| SCIBERT            | 0.1573                    | **0.3400**                            | 0.7420                 | **0.9110**                      |
+
+
+| Using Euclidian Distance | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
+|--------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
+| CustomWord2Vec 13d | 0.1200                    | 0.1853                            | 0.6675                 | 0.6717                          |
+| CustomWord2Vec 50d | 0.1133                    | 0.1626                            | 0.6551                 | 0.6200                          |
+| GLOVE              | 0.0973                    | 0.3053                            | 0.7144                 | 0.7503                          |
+| Finetuned GLOVE    | 0.1133                    | 0.3053                            | 0.7186                 | 0.7489                          |
+| BERT               | 0.2773                    | 0.3173                            | 0.7489                 | 0.8227                      |
+| SCIBERT            | 0.1786                    | 0.3373                            | **0.7524**                 | 0.9034                          |
+
 ## **Supervised Learning**
 #### **Model accuracies**
 Beginning with the BC task, which encodes whether or not a paper is included in the conference, we ran a logistic regression model yielding high prediction scores on training data and testing data. Moving forward to MC-F task, we experimented with multiple models and utilized grid search to fine-tune hyperparameters for the best fit. Our fitting of multiple models, finetuning of parameters, and prediction accuracies can be summarized in the tables below (only accuracy of best-performing hyperparameter was reported):
