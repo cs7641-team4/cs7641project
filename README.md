@@ -25,7 +25,7 @@ The dataset's explanatory variable of interest is the given abstract and the res
 Bag of words is a classical approach to creating sparse feature vectors of documents by generating counts of each word in the sentence, where each index in the vector represents a word in the corpus and the value at this index is the count in the document. Since each vector's dimensionality is equal to the size of the vocabulary in the corpus, these vectors can be quite unruly to work with and also suffer from the fact that distance in the feature space has no tangible meaning.
 
 #### *Trained W2V*
-Word2vec models are helpful in capturing a representation of a word based upon the context that the word is used in. A famous linguist Firth explains the motivation for this technique by stating "You shall know a word by the company it keeps". There are many pre-trained word2vec models that can be utilized, but they are often biased to the topics in the corpus they are trained on. In order to ensure words have domain specific meaning to the corpus used, a word2vec model trained on the corpus may provide a more clear representation of corpus specific terms. A skipgram word2vec model built using negative sampling loss and optimized with stochastic gradient descent is implemented on the entire corpus specific to the dataset used.
+Word2vec models are helpful in capturing a representation of a word based upon the context that the word is used in. A famous linguist Firth explains the motivation for this technique by stating "You shall know a word by the company it keeps". There are many pre-trained word2vec models that can be utilized, but they are often biased to the topics in the corpus they are trained on. In order to ensure words have domain specific meaning to the corpus used, a word2vec model trained on the corpus may provide a more clear representation of corpus specific terms. A skipgram word2vec model built using negative sampling loss and optimized with stochastic gradient descent is implemented on the entire corpus specific to the dataset used. We train both a 13 dimensional and 50 dimensional version of this model on our corpus.
 
 #### *GloVe*
 GloVe is a set of word embeddings trained by researchers at Stanford in 2014 using Wikipedia, Twitter, and a Common Crawl dataset [4]. These vectors are trained by aggregating global word-word co-occurrence statistics from a corpus and the resulting representations show linear substructures in the semantic space, allowing for analogies such as: man to woman as to king and queen, to be represented in the semantic space. GloVe is a fairly standard pre-trained Word2Vec model and serves as a good starting place for many NLP classification tasks.
@@ -35,7 +35,11 @@ To further improve upon the pre-trained word embeddings, we thought that possibl
 
 #### *BERT*
 
+<!-- TODO: Ryan -->
+
 #### *SciBERT*
+
+<!-- TODO: Ryan -->
 
 ## **Supervised Learning**
 ### *A. Task Introduction*
@@ -84,10 +88,6 @@ The K-means algorithm uses Euclidean distance to measure the closeness between d
 
 #### *Gaussian Mixture Model*
 To further test the separability of the training samples, Gaussian Mixture Models can be used to determine if different shaped decision boundaries are more appropriate for separating the dataset. Since K-means is Euclidean distance based, its decision boundaries will be spherical. However, Gaussian Mixture Models will have decision boundaries representing the shape of the respective distribution leading to different ellipse shaped decision boundaries. Silhouette scores will be used to compare K-means and Gaussian Mixture Models to see which one performs best.
-
-
-
-
 
 ## **Results**
 ### **Unsupervised Learning**
@@ -149,15 +149,15 @@ Two silhouettes are shown above corresponding to K-means with 2 clusters and K-m
 The silhouette trends for the Guassian Mixture Model (GMM) is similar to K-means with 2 clusters showing the best silhouette score. GMM is also observed to have an overall worse performance than K-means at separating the dataset into clear clusters. There are many more samples with coefficient values less than zero in GMM than K-means which shows there are more overlapping classes in GMM.
 
 
-#### **B. LDA Classification**
+#### **D. LDA Classification**
 
 LDA's generated 11 topic distribution over each abstract is tested briefly as an input for an SVM classifier. It is shown to reach a test set accuracy of 55.55% for multi-class labeling and a test accuracy of 86.50% for binary class labeling. While these scores are not as strong as the supervised classification using GloVe embeddings, they still hold up well in comparison for how simple their representations are. Since each feature represents an abstracts' distribution over topics, the engineered features can be more explainable than GloVe embeddings.
 
-#### **C. Semi-Supervised K-means with Topic Summaries**
+#### **E. Semi-Supervised K-means with Topic Summaries**
 
 In this analysis the K-means centroid output can be viewed as centered word vectors that try to generalize the meaning of the word vectors assigned to each centroid. In this view, if ground truth word vector representations of the known classes are available, then these known representations can be assigned to each centroid through a given similarity metric. This idea is shown through first calculating word vector representations of each class in the dataset. This calculation involves going over abstracts assigned to each class and computing the cosine similarity of each abstract assigned to the same class and averaging the value. The abstracts with the five greatest average similarity scores are then selected for each class. Within each class these top 5 abstracts' word vectors are averaged to compute the ground truth word vector representation for the respective class. The cosine similiarity is then calculated for each ground truth representation to the 11 centroids from K-means and the centroid is mapped to the ground truth that has the greatest similarity. This method achieves 48.9% accuracy for multi-class labeling and 87.03% accuracy for binary classification.
 
-#### **C. Language Model Visualization**
+#### **F. Language Model Visualization**
 The word2vec model trained on the corpus is found to capture the contextual meaning of the words well. The word plot in the figure below shows a two dimensional representation of the trained 13 dimensional vectors. While some contextual meaning is lost in the dimensionality reduction, the plot still shows similar words grouped closer together and more unrelated words further apart. The words cache, memory, time, and latency are expected to be located around similar words contextually so it makes sense they are closer. Language, learning, bert, and machine are all heavily related to machine learning terminology so it makes sense that they are grouped closer together as well. Paper means something different from the other words so it is farther away which agrees with common sense. A more robust comparison involving all the dimensions is to use cosine similarity to compare two vectors. The vectors for cache and memory achieve a cosine similarity score  of 0.99 which is close to one indicating that the vectors are in a similar plane. However, time and paper have a cosine similarity score of 0.56 showing that they are not as related in the same dimension space.
 
 ![](https://drive.google.com/uc?export=view&id=1cSRrIoN58694oNvjAiV3NcMgO07vNGNN)
@@ -186,7 +186,7 @@ These 2d and 3d visualizations are intended to represent a projection from the h
 
 ![](https://drive.google.com/uc?export=view&id=14xUpW-Bl9IjRnCx7UUVMb-LsywijpJn7)
 
-#### **D. Language Model Comparison**
+#### **G. Language Model Comparison**
 
 In order to understand the importance of the feature space we choose from various language models, we look at a baseline classification model, support vector machine for classification with rbf kernel, and compare the train and test (33% of the dataset) accuracies. We will explore optimizing the supervised techniques later, but let this serve as a comparison of each language models expressiveness.
 
@@ -230,22 +230,25 @@ In order to understand the importance of the feature space we choose from variou
 
 We see that SciBERT seem to provide the most separability to the data in all tasks. 
 
-#### Model accuracies for classification
+#### **H. Model accuracies for classification**
 
-| Using Inverse Cosine Similarity | MC-F (class descriptions) | MC-F (derived class descriptions) | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
+<!-- TODO: Ryan -->
+
+| Using Inverse Cosine Similarity | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-O (class descriptions) | MC-O (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
 |---------------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
 | CustomWord2Vec 13d              | 0.0613                    | 0.3931                            | 0.1186                    | 0.2133                            | 0.6972                 | 0.6227                          |
 | CustomWord2Vec 50d              | 0.0572                    | 0.431                             | 0.1106                    | 0.2093                            | 0.6896                 | 0.6131                          |
 | GLOVE                           | 0.0531                    | 0.4689                            | 0.1026                    | 0.3266                            | 0.6944                 | 0.7006                          |
 | Finetuned GLOVE                 | 0.0531                    | 0.4696                            | 0.1026                    | 0.3253                            | 0.6979                 | 0.7096                          |
 | BERT                            | 0.1462                    | 0.4565                            | 0.2826                    | 0.32                              | 0.7379                 | 0.8151                          |
-| SCIBERT                         | 0.0813                    | 0.1758                            | 0.1573                    | 0.34                              | 0.742                  | 0.911                           |
+| SCIBERT                         | 0.0813                    | 0.1758                            | 0.1573                    | 0.34                              | 0.742                  | 0.9110                           |
 
+<!-- TODO: Ryan -->
 
-| Using Euclidian Distance | MC-F (class descriptions) | MC-F (derived class descriptions) | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
+| Using Euclidian Distance | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-O (class descriptions) | MC-O (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
 |--------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
-| CustomWord2Vec 13d       | 0.0621                    | 0.3931                            | 0.12                      | 0.1853                            | 0.6675                 | 0.6717                          |
-| CustomWord2Vec 50d       | 0.0586                    | 0.2903                            | 0.1133                    | 0.1626                            | 0.6551                 | 0.62                            |
+| CustomWord2Vec 13d       | 0.0621                    | 0.3931                            | 0.1200                      | 0.1853                            | 0.6675                 | 0.6717                          |
+| CustomWord2Vec 50d       | 0.0586                    | 0.2903                            | 0.1133                    | 0.1626                            | 0.6551                 | 0.6200                            |
 | GLOVE                    | 0.0503                    | 0.4655                            | 0.0973                    | 0.3053                            | 0.7144                 | 0.7503                          |
 | Finetuned GLOVE          | 0.0586                    | 0.4613                            | 0.1133                    | 0.3053                            | 0.7186                 | 0.7489                          |
 | BERT                     | 0.1434                    | 0.4544                            | 0.2773                    | 0.3173                            | 0.7489                 | 0.8227                          |
@@ -254,6 +257,8 @@ We see that SciBERT seem to provide the most separability to the data in all tas
 ## **Supervised Learning**
 #### **Model accuracies**
 Beginning with the BC task, which encodes whether or not a paper is included in the conference, we ran a logistic regression model yielding high prediction scores on training data and testing data. Moving forward to MC-F task, we experimented with multiple models and utilized grid search to fine-tune hyperparameters for the best fit. Our fitting of multiple models, finetuning of parameters, and prediction accuracies can be summarized in the tables below (only accuracy of best-performing hyperparameter was reported):
+
+<!-- TODO: Update these with SciBERT, Finetuned glove and 50d trained w2v  -->
 
 - *MC-F (Multiclass Classification - Full)*
 
@@ -321,8 +326,7 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 
 ## **Discussion**
 ### **Language Models**
-
-In the latter half of this project, we hope to explore transformer based language models such as BERT [1] and SciBERT [5]. Research has shown that the context attention mechanisms in these models lead to a richer feature space and we hope this will allow for the creation of better classification models.
+<!-- TODO -->
 
 ### **Unsupervised Learning**
 
@@ -331,6 +335,8 @@ Through observing the outputs of LDA, K-means, and GMM models, the dataset can b
 It is shown that the unsupervised models' output can act as engineered features for a supervised learning task with LDA's output for each data point representing the probability distribution over the number of topics. However, the performance achieved with this method did not exceed the performance with alternative reprseentations of the dataset.
 
 A semi-supervised approach for labeling unsupervised cluster outputs is developed and acceptable performance on binary classification tasks with an accuracy of 87.03%. The strength of this method is that only 5 abstracts need to be collected as being representative of a topic in order for classification of future abstracts to be performed. This decrease in data collection allows the model to be more flexible in the way it can be distributed and generalized on different research paper separation tasks. Although this method does not perform as highly as the supervised models, it is still recommended to use in situations where lengthy data collection would be difficult.
+
+<!-- TODO: Talk about real world workflow, results from unsupervised classification -->
 
 ### **Supervised Learning**
 
