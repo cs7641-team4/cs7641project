@@ -35,11 +35,11 @@ To further improve upon the pre-trained word embeddings, we thought that possibl
 
 #### *BERT*
 
-<!-- TODO: Ryan -->
+BERT (Bidirectional Encoder Representations from Transformers) is a recent paper published by researchers at Google AI Language. BERT makes use of Transformer, an attention mechanism that learns contextual relations between words (or sub-words) in a text. In its vanilla form, Transformer includes two separate mechanisms — an encoder that reads the text input and a decoder that produces a prediction for the task. Since BERT’s goal is to generate a language model, only the encoder mechanism is necessary. The full architecture is described in [7]. 
 
 #### *SciBERT*
 
-<!-- TODO: Ryan -->
+SciBERT is a BERT model trained on scientific text. SciBERT is trained on papers from the corpus of semanticscholar.org. Corpus size is 1.14M papers, 3.1B tokens. Its results are state-of-the-art performance on a wide range of scientific domain nlp tasks. This serves as the SOTA model for our task.
 
 ## **Supervised Learning**
 ### *A. Task Introduction*
@@ -356,7 +356,7 @@ We found that our best results were sourced in the binary classification (BC) ta
 The more complex task of multiclass classification yielded lower results, as expected. For full multiclass classification (MC-F) with all classes, the best test accuracy of about 67% was achieved by our linear regression model. Thus, our model was able to classify the given papers into the eleven classes according to their topic with mid-level accuracy. We should note that this classification included the negative samples class (Class 11). An effort to classify papers according to only positive sample classes was done in the following task of MC-PO, in which the average accuracy decreased further. The best test accuracy for the MC-PO task was achieved by the Naive Bayes classifier, with a value of 44%. This reveals that about a third of the accurate classification that was done in the MC-F task was sourced in classifying papers into the negative class. An effort to balance the dataset for the positive classes such that all classes contain the same number of samples did not provide significant improvement. This was reflected in our results of the MC-PO Balanced task after dataset balancing via SMOTE, where our neural network MLP model achieved the best test accuracy of about 45%. 
  
 ## **Conclusion**
-In this project, we demonstrated the feasibility of automatically detecting the topic of an academic paper based on its topic. Using unsupervised methods such as GloVE and BERT, we showed that there is significant linear seperability of embeddings between in-conference samples and out-of-conference samples. Using supervised methods, we have shown that a Multi-Layered Perceptron classifier trained on only around 1000 abstracts can distinguish between in-conference papers and out-of-conference papers with a 95% accuracy rate. Future work could be done to improve accuracy of multi-class classification to achieve more promising topic classification of papers. 
+In this project, we demonstrated the feasibility of automatically detecting the topic of an academic paper based on its topic. Using unsupervised language models such as GloVE and BERT, we showed that there is significant linear seperability of embeddings between in-conference samples and out-of-conference samples. Using supervised methods, we have shown that a Multi-Layered Perceptron classifier trained on only around 1000 abstracts can distinguish between in-conference papers and out-of-conference papers with a 95% accuracy rate. Future work could be done to improve accuracy of multi-class classification to achieve more promising topic classification of papers. 
 
 ## References
  
@@ -371,6 +371,8 @@ In this project, we demonstrated the feasibility of automatically detecting the 
 [5] Iz Beltagy, Kyle Lo, & Arman Cohan (2019). SciBERT: Pretrained Language Model for Scientific Text. In EMNLP.  
 
 [6] https://github.com/roamanalytics/mittens. 
+
+[7] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, & Illia Polosukhin. (2017). Attention Is All You Need.
 
 ## **Appendix**
 ### **A. Data Label Frequencies**
