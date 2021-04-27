@@ -334,6 +334,20 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 | Bagging Classifier           | 'BaggingClassifier': {'base_estimator': [SVC()], 'n_estimators': [10], 'random_state': [0]}                                                                         | {'base_estimator': SVC(), 'n_estimators': 10, 'random_state': 0}                                                   | 0.30344827586206896    |
 | Gradient Boosting Classifier | {'learning_rate': [0.1, 0.2, 0.5], 'n_estimators': [100, 500, 1000], 'max_depth': [3, 9, 15]}                                                                       | {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 500, 'n_iter_no_change': 5}                                 | 0.43448275862068964    |
 
+- *Models with SCIBERT Embeddings*
+
+| Model | MC-F | MC-PO Unbalanced | MC-PO Balanced | BC | 
+|---|---|---|---|---|
+| SVM | **0.6862** | 0.4333 | **0.4266** | 0.9586 |
+| Logistic Regression | 0.6931 | **0.4600** | 0.3733 | 0.9655 |
+| Decision Tree | 0.5689 | 0.2466 | 0.1600 | 0.8655 |
+| Random Forest | 0.6379 | 0.3866 | 0.2933 | 0.9413 |
+| MLP | 0.6793 | 0.4333 | 0.3866 | 0.9551 |
+| AdaBoost | 0.5689 | 0.2733 | 0.2133 | 0.9482 |
+| Naive Bayes | 0.6551 | 0.4200 | 0.3733 | 0.9448 |
+| Bagging Classifier | 0.6689 | 0.3933 | 0.4266 | 0.9689 |
+
+
 ## **Discussion**
 ### **Language Models**
 
