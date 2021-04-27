@@ -138,24 +138,24 @@ We see that GloVe-based models seem to provide the most separability to the data
 
 #### Model accuracies for classification
 
-| Using Inverse Cosine Similarity | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
-|--------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
-| CustomWord2Vec 13d | 0.1186                    | 0.2133                            | 0.6972                 | 0.6227                          |
-| CustomWord2Vec 50d | 0.1106                    | 0.2093                            | 0.6896                 | 0.6131                          |
-| GLOVE              | 0.1026                    | 0.3266                            | 0.6944                 | 0.7006                          |
-| Finetuned GLOVE    | 0.1026                    | 0.3253                            | 0.6979                 | 0.7096                          |
-| BERT               | **0.2826**                    | 0.3200                            | 0.7379                 | 0.8151                          |
-| SCIBERT            | 0.1573                    | **0.3400**                            | 0.7420                 | **0.9110**                      |
+| Using Inverse Cosine Similarity | MC-F (class descriptions) | MC-F (derived class descriptions) | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
+|---------------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
+| CustomWord2Vec 13d              | 0.0613                    | 0.3931                            | 0.1186                    | 0.2133                            | 0.6972                 | 0.6227                          |
+| CustomWord2Vec 50d              | 0.0572                    | 0.431                             | 0.1106                    | 0.2093                            | 0.6896                 | 0.6131                          |
+| GLOVE                           | 0.0531                    | 0.4689                            | 0.1026                    | 0.3266                            | 0.6944                 | 0.7006                          |
+| Finetuned GLOVE                 | 0.0531                    | 0.4696                            | 0.1026                    | 0.3253                            | 0.6979                 | 0.7096                          |
+| BERT                            | 0.1462                    | 0.4565                            | 0.2826                    | 0.32                              | 0.7379                 | 0.8151                          |
+| SCIBERT                         | 0.0813                    | 0.1758                            | 0.1573                    | 0.34                              | 0.742                  | 0.911                           |
 
 
-| Using Euclidian Distance | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
-|--------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
-| CustomWord2Vec 13d | 0.1200                    | 0.1853                            | 0.6675                 | 0.6717                          |
-| CustomWord2Vec 50d | 0.1133                    | 0.1626                            | 0.6551                 | 0.6200                          |
-| GLOVE              | 0.0973                    | 0.3053                            | 0.7144                 | 0.7503                          |
-| Finetuned GLOVE    | 0.1133                    | 0.3053                            | 0.7186                 | 0.7489                          |
-| BERT               | 0.2773                    | 0.3173                            | 0.7489                 | 0.8227                      |
-| SCIBERT            | 0.1786                    | 0.3373                            | **0.7524**                 | 0.9034                          |
+| Using Euclidian Distance | MC-F (class descriptions) | MC-F (derived class descriptions) | MC-O (class descriptions) | MC-O (derived class descriptions) | BC (class description) | BC (derived class descriptions) |
+|--------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
+| CustomWord2Vec 13d       | 0.0621                    | 0.3931                            | 0.12                      | 0.1853                            | 0.6675                 | 0.6717                          |
+| CustomWord2Vec 50d       | 0.0586                    | 0.2903                            | 0.1133                    | 0.1626                            | 0.6551                 | 0.62                            |
+| GLOVE                    | 0.0503                    | 0.4655                            | 0.0973                    | 0.3053                            | 0.7144                 | 0.7503                          |
+| Finetuned GLOVE          | 0.0586                    | 0.4613                            | 0.1133                    | 0.3053                            | 0.7186                 | 0.7489                          |
+| BERT                     | 0.1434                    | 0.4544                            | 0.2773                    | 0.3173                            | 0.7489                 | 0.8227                          |
+| SCIBERT                  | 0.0924                    | 0.5765                            | 0.1786                    | 0.3373                            | 0.7524                 | 0.9034                          |
 
 ## **Supervised Learning**
 #### **Model accuracies**
