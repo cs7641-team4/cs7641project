@@ -84,6 +84,55 @@ The visualizations for the topic distributions of LDA with 3 topics and for LDA 
 ![](https://drive.google.com/uc?export=view&id=1011KtcF0oTQBH3t2RZzZVUazxeU7DhrO)
 
 
+#### **B. K-means**
+
+<img src="/figures/Kmeans_elbow.png" alt="" width="600" heigh="400"/>
+
+A K-means model is developed using the custom 50 dimensional word2vec representations of the dataset. The above figure shows the sum of squared distances for a range of cluster values. Using the elbow method approximation there appears to be an elbow either at 2 clusters or 3 clusters since after those clusters there are not significant improvements in the sum of squared distance metric. The silhouette coefficient can be used to further show the optimal number of clusters.
+
+<img src="/figures/Kmeans 2 clusters.png" alt="" width="600" heigh="400"/>
+
+<img src="/figures/Kmeans_11_clusters.png" alt="" width="600" heigh="400"/>
+
+| Number of Clusters | Silhoutte Coefficient |
+|---|---|
+| 2 | 0.3756 |
+| 3 | 0.2578 |
+| 4 | 0.2260 |
+| 5 | 0.2243 |
+| 6 | 0.2100 |
+| 7 | 0.1960 |
+| 8 | 0.1849 |
+| 9 | 0.1787 |
+| 10 | 0.1629 |
+| 11 | 0.1588 |
+
+Two silhouettes are shown above corresponding to K-means with 2 clusters and K-means with 11 clusters. THe silhouette plot for 2 clusters shows better separation between the clusters with an average silhouette score of 0.3756 and very few samples having less than 0 silhouette scores. However, the 11 cluster silhouette plot performs much worse at creating clear separation within the dataset. More samples within clusters have silhouette scores less than 0 which indicates the precense of overlapping classes. The sillhoutte scores of clusters inbetween 2 and 11 inclusive can be seen in the above table. It is clear that 2 clusters has the clearest distinction.
+
+
+
+#### **C. Gaussian Mixture Model**
+
+<img src="/figures/GMM 2 components.png" alt="" width="600" heigh="400"/>
+
+<img src="/figures/GMM 11 components.png" alt="" width="600" heigh="400"/>
+
+| Number of Clusters | Silhoutte Coefficient |
+|---|---|
+| 2 | 0.2528 |
+| 3 | 0.0959 |
+| 4 | 0.0109 |
+| 5 | 0.0352 |
+| 6 | 0.0122 |
+| 7 | 0.0232 |
+| 8 | 0.0306 |
+| 9 | 0.0425 |
+| 10 | 0.0367 |
+| 11 | 0.0438 |
+
+The silhouette trends for the Guassian Mixture Model (GMM) is similar to K-means with 2 clusters showing the best silhouette score. GMM is also observed to have an overall worse performance than K-means at separating the dataset into clear clusters. There are many more samples with coefficient values less than zero in GMM than K-means which shows there are more overlapping classes in GMM.
+
+
 #### **B. LDA Classification**
 
 LDA's generated 11 topic distribution over each abstract is tested briefly as an input for an SVM classifier. It is shown to reach a test set accuracy of 55.55% for multi-class labeling and a test accuracy of 86.50% for binary class labeling. While these scores are not as strong as the supervised classification using GloVe embeddings, they still hold up well in comparison for how simple their representations are. Since each feature represents an abstracts' distribution over topics, the engineered features can be more explainable than GloVe embeddings. Further exploration and optimization of this technique will be performed in the future.
