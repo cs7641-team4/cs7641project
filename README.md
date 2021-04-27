@@ -188,11 +188,11 @@ These 2d and 3d visualizations are intended to represent a projection from the h
 
 - *BERT*
 
-![](https://raw.githubusercontent.com/cs7641-team4/cs7641project/main/figures/bert_3d.png)
+<!-- TODO: Ryan -->
 
 - *SciBERT*
 
-![](https://raw.githubusercontent.com/cs7641-team4/cs7641project/main/figures/scibert_3d.png)
+<!-- TODO: Ryan -->
 
 
 #### **G. Language Model Comparison**
@@ -351,7 +351,7 @@ It is shown that the unsupervised models' output can act as engineered features 
 A semi-supervised approach for labeling unsupervised cluster outputs is developed and acceptable performance on binary classification tasks with an accuracy of 87.03%. The strength of this method is that only 5 abstracts need to be collected as being representative of a topic in order for classification of future abstracts to be performed. This decrease in data collection allows the model to be more flexible in the way it can be distributed and generalized on different research paper separation tasks. Although this method does not perform as highly as the supervised models, it is still recommended to use in situations where lengthy data collection would be difficult.
 
 <!-- TODO: Talk about real world workflow, results from unsupervised classification -->
-As an extension of the semi-supervised method, an approach involving direct distance calculations between the topic summary word vectors and each abstract's word vectors is implemented. Both Euclidean and inverse cosine similarity distances are used to compare abstracts directly with the topic summaries. The topic summaries use either the top 5 abstracts for each class as described in the semi-supervised approach or the class descriptions directly which can be seen in Appendix B. Each of these methods are performed on each language model built. The results show that the greatest binary classification is with SCIBERT at 0.9110 using inverse cosine similarity and the semi-supervised topic summary approach. The greatest multi classification is also with SCIBERT at 0.58 using Euclidean distance and semi-supervised topics. The greatest multi classification excluding negatives samples is with SCIBERT at 0.34 using inverse cosine similarity and semi-supervised topics. Overall it is observed that the semi-supervised topic summaries perform better than the direct class descriptions. The class descriptions only achieve its highest accuracy at 0.74 for binary classification. The benefit of the class descriptions is that it uses the least amount of data collection besides collecting a predefined list of topics for a conference. This method could be useful in situations where the research conference wants a very quick approach in binary classification. However, if more accuracy is desired the conference could provide 5 abstracts that they think are representative of a topic in the conference and then the semi-supervised approach could be used.
+As an extenstion of the semi-supervised method, an approach involving direct distance calculations between the topic summary word vectors and each abstract's word vectors is implemented. Both Euclidean and inverse cosine similarity distances are used to compare abstracts directly with the topic summaries. The topic summaries use either the top 5 abstracts for each class as described in the semi-supervised approach or the class descriptions direclty which can be seen in Appendix B. Each of these methods are performed on each language model built. The results show that the greatest binary classification is with SCIBERT at 0.9110 using inverse cosine similarity and the semi-supervised topic summary approach. The greatest multi classification is also with SCIBERT at 0.58 using Euclidean distance and semi-supervised topics. The greatest multi classification excluding negatives samples is with SCIBERT at 0.34 using inverse cosine similarity and semi-supervised topics.
 
 ### **Supervised Learning**
 
@@ -405,7 +405,7 @@ In this project, we demonstrated the feasibility of automatically detecting the 
 
 ### **C. Contributions**
 - Ryan Cooper:
-- Johnny Nguyen:
+- Johnny Nguyen: Create framework for supervised learning testing, integrate SMOTE into the data, manually label data, 
 - Rhythm Syed:
 - Hamna Khan:
 - Evan Downs:
