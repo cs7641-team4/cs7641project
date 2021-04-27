@@ -326,7 +326,7 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 
 ## **Discussion**
 ### **Language Models**
-<!-- TODO -->
+<!-- TODO: Ryan -->
 
 ### **Unsupervised Learning**
 
