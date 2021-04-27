@@ -188,11 +188,11 @@ These 2d and 3d visualizations are intended to represent a projection from the h
 
 - *BERT*
 
-<!-- TODO: Ryan -->
+![](https://raw.githubusercontent.com/cs7641-team4/cs7641project/main/figures/bert_3d.png)
 
 - *SciBERT*
 
-<!-- TODO: Ryan -->
+![](https://raw.githubusercontent.com/cs7641-team4/cs7641project/main/figures/scibert_3d.png)
 
 
 #### **G. Language Model Comparison**
