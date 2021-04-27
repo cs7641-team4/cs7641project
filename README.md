@@ -402,3 +402,10 @@ In this project, we demonstrated the feasibility of automatically detecting the 
 | Class9  | Speech                   | Speech and Multimodality                                                                                                                     |
 | Class10 | Resources and Evaluation | Resources and Evaluation                                                                                                                     |
 | Class11 | Negative Samples         |                                                                                                                                              |
+
+### **C. Contributions**
+- Ryan Cooper:
+- Johnny Nguyen:
+- Rhythm Syed:
+- Hamna Khan:
+- Evan Downs:
