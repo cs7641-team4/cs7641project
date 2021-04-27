@@ -243,7 +243,7 @@ We see that SciBERT seem to provide the most separability to the data in all tas
 
 In this section we show the results of using the methods described in "Classification in Semantic Space". Notice that each task has 2 sets of values, each representing the latent representation of the class in the semantic space. The first, "class descriptions" is derived from the topic descriptions for each label as described in Appendix B and nothing more. The other, "Semi-supervised k=5" is using the top 5 most representative abstracts averaged as a representation of the class. This represents the case where a conference organizer gives the researchers some sample papers for each class. We compare minimizing two values in the semantic space for class assignment: inverse cosine similarity and euclidean distance.
 
-| Using Inverse Cosine Similarity | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-O (class descriptions) | MC-O (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
+| Using Inverse Cosine Similarity | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-PO (class descriptions) | MC-PO (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
 |---------------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
 | CustomWord2Vec 13d              | 0.0613                    | 0.3931                            | 0.1186                    | 0.2133                            | 0.6972                 | 0.6227                          |
 | CustomWord2Vec 50d              | 0.0572                    | 0.431                             | 0.1106                    | 0.2093                            | 0.6896                 | 0.6131                          |
@@ -253,7 +253,7 @@ In this section we show the results of using the methods described in "Classific
 | SCIBERT                         | 0.0813                    | 0.1758                            | 0.1573                    | 0.34                              | 0.742                  | 0.9110                           |
 
 
-| Using Euclidian Distance | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-O (class descriptions) | MC-O (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
+| Using Euclidian Distance | MC-F (class descriptions) | MC-F (Semi-supervised k=5) | MC-PO (class descriptions) | MC-O (Semi-supervised k=5) | BC (class description) | BC (Semi-supervised k=5) |
 |--------------------------|---------------------------|-----------------------------------|---------------------------|-----------------------------------|------------------------|---------------------------------|
 | CustomWord2Vec 13d       | 0.0621                    | 0.3931                            | 0.1200                      | 0.1853                            | 0.6675                 | 0.6717                          |
 | CustomWord2Vec 50d       | 0.0586                    | 0.2903                            | 0.1133                    | 0.1626                            | 0.6551                 | 0.6200                            |
@@ -389,7 +389,7 @@ In this project, we demonstrated the feasibility of automatically detecting the 
 
 ### **B. NLP Topics** 
 
-| Class | Topic Name | Topic Description | | |
+| Class | Topic Name | Topic Description |
 |---------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | Class1  | Linguistics              | Syntax, Phonology, Morphology and Word Segmentation, Linguistic Theories, Cognitive Modeling and Psycholinguistics, Discourse and Pragmatics |
 | Class2  | Text_Generation          | Generation & Summarization & Machine Translation and Multilinguality,                                                                        |
