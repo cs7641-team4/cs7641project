@@ -345,7 +345,7 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 | MLP | 0.6793 | 0.4333 | 0.3866 | 0.9551 |
 | AdaBoost | 0.5689 | 0.2733 | 0.2133 | 0.9482 |
 | Naive Bayes | 0.6551 | 0.4200 | 0.3733 | 0.9448 |
-| Bagging Classifier | 0.6689 | 0.3933 | 0.4266 | 0.9689 |
+| Bagging Classifier | 0.6689 | 0.3933 | 0.4266 | **0.9689** |
 
 
 ## **Discussion**
