@@ -11,7 +11,7 @@ We will develop this work in two phases of supervised and unsupervised learning.
 ## **Methods**
 ### **Data Collection:**
 
-A major part of our midterm progress has been devoted to developing our own custom dataset of research papers from specific conferences. With this effort, we focused on collecting papers specifically from the EMNLP conference. We chose EMNLP over other conferences because of the focus on NLP related topics. Had we chosen a conference such as ICML which focuses more on a broad variety of ML topics, the separability between topics would become much blurrier and therefore harder to learn. With the EMNLP conference, we collected the topics of interest from previous years and reduced the number of classifications down to 11 classes including: Linguistics, Text Generation, Sentiment Analysis, ML for NLP, Q&A, NLP Applications, Social Science, Information Extraction, Speech, Resources and Evaluation, and Negative Samples. We provide further detail about the dataset in the Appendix Section. Given these classes, we hand labeled datasets of papers from EMNLP 2020 and 2019, choosing 2 labels that best represent a paper’s abstract. To collect the papers for both year’s conferences, we developed a scraper that collected data from aclweb.org such as title, abstract, author list, and pdf url. To generate the negative samples for our dataset, we utilized the arXiv dataset and collected papers from all topics excluding Information Retrieval, Computational Linguistics, Computers and Society, Social and Information Networks, and General Literature. Altogether, our final dataset contained 1450 samples, 700 of which are negative samples. Given this dataset, the next step is to generate word embeddings and train our models (supervised and unsupervised).
+A major part of our project has been devoted to developing our own custom dataset of research papers from specific conferences. With this effort, we focused on collecting papers specifically from the EMNLP conference. We chose EMNLP over other conferences because of the focus on NLP related topics. Had we chosen a conference such as ICML which focuses more on a broad variety of ML topics, the separability between topics would become much blurrier and therefore harder to learn. With the EMNLP conference, we collected the topics of interest from previous years and reduced the number of classifications down to 11 classes including: Linguistics, Text Generation, Sentiment Analysis, ML for NLP, Q&A, NLP Applications, Social Science, Information Extraction, Speech, Resources and Evaluation, and Negative Samples. We provide further detail about the dataset in the Appendix Section. Given these classes, we hand labeled datasets of papers from EMNLP 2020 and 2019, choosing 2 labels that best represent a paper’s abstract. To collect the papers for both year’s conferences, we developed a scraper that collected data from aclweb.org such as title, abstract, author list, and pdf url. To generate the negative samples for our dataset, we utilized the arXiv dataset and collected papers from all topics excluding Information Retrieval, Computational Linguistics, Computers and Society, Social and Information Networks, and General Literature. Altogether, our final dataset contained 1450 samples, 700 of which are negative samples. Given this dataset, the next step is to generate word embeddings and train our models (supervised and unsupervised).
 
 ### **Data Preprocessing**
 The dataset's explanatory variable of interest is the given abstract and the response variable is the label indicating the given abstract's class. Before featurizing the abstract's text, extensive cleaning is necessary. While the type of text cleaning can differ between models, all the techniques will be introduced here and the use cases will be explained in the following sections. One method is ensuring that all the text within each abstract only includes alphabetic characters and spaces. All punctuation and special characters are removed in order to reduce the complexity of the representation. For further reducing the size of the abstracts, stop words such as the, an, our, etc. are removed from each abstract. Lemmatization is also used in some cases to reduce words to their root in order to be able to map similar words to the same representation. Tagging is also used when it is necessary to only focus on a word's part of speech. This technique can be helpful in reducing the size of each abstract's representation.  
@@ -33,15 +33,11 @@ GloVe is a set of word embeddings trained by researchers at Stanford in 2014 usi
 #### *Fine-tuned GloVe*
 To further improve upon the pre-trained word embeddings, we thought that possibly fine-tuning GloVe with our corpus could prove valuable as it would include out-of-vocabulary words, and further align the feature space with the co-occurrences in the training corpus. Utilizing a package called mittens, fine-tuning GloVe embeddings becomes easy and generating this language model aligns the feature space to be task-specific.
 
+#### *BERT*
 
-#### *LDA*
-LDA (Latent Dirichlet Allocation) is an unsupervised learning method that is based on treating each document as a mixture of topics and each topic as a mixture of words. At a high level the method updates the probability of a word being assigned to a topic and a document being assigned to a topic.  Two required hyperparameters for this model are alpha which specifies the level of topic mixtures that should be present in a documents' classification, and beta which represents the amount of words that should be used in a topic. The number of topics also needs to be specified before running the model. This model is implemented over the text abstracts to see if topics are distinguishable. Since it is known that there are 11 labels, LDA can be tested to see if it can separate out the document into 11 classes. This method can validate how distinguishable 11 classes are. LDA can also be used for dimensionality reduction. Since each abstract is assigned a probability of belonging to each class, the distribution over the number of classes can represent an engineered feature of the abstract. The dimensionality of this feature is the number of topics chosen.
+#### *SciBERT*
 
-#### *K-means*
-The K-means algorithm uses Euclidean distance to measure the closeness between data points and pre-defined number of clusters. Similar to LDA's use case above, this model is useful in the analysis since the number of clusters can be chosen to represent the expected number of clusters in the dataset. Given that word vectors are used as the input data, K-means' centroid output could be used to represent centered word vectors for each cluster. These centered word vectors could be useful in mapping pre-defined topic summary word vectors to the closest center word vector from K-means. This process can lead to a semi-supervised approach to automatic labeling of K-means' cluster output.
 
-#### *Gaussian Mixture Model*
-To further test the separability of the training samples, Gaussian Mixture Models can be used to determine if different shaped decision boundaries are more appropriate for separating the dataset. Since K-means is Euclidean distance based, its decision boundaries will be spherical. However, Gaussian Mixture Models will have decision boundaries representing the shape of the respective distribution leading to different ellipse shaped decision boundaries. Sillhouette scores will be used to compare K-means and Gaussian Mixture Models to see which one performs best.
 
 ## **Supervised Learning**
 ### *A. Task Introduction*
@@ -72,6 +68,28 @@ For each of these models detailed in section B, we use grid search with 10-fold 
 
 ### **D. Balancing the dataset**
 Because our dataset is imbalanced, especially among the positive classes, we experimented with SMOTE as a method to fix this imbalance. In summary, SMOTE oversamples classes that are in the minority by taking samples from that class and consider their k nearest neighbors in the feature space. Synthetic data points are then created by randomly taking a vector between one of those k neighbors and the current data point, multiplying it by a factor between 0 and 1, and adding it to the original data point. We executed sklearn’s SMOTE implementation on the dataset and re-ran the MC-PO task for further analysis. After rebalancing, every positive class (1-10) contains 132 samples
+
+## **Unsupervised Learning**
+### *A. Task Introduction*
+Similar to the task introduced in the supervised case, in the scope of unsupervised learning we assume no knowledge about the labels of our corpus. Given a sufficiently representative language model and semantic space, it becomes feasible to try various techniques of clustering, distance thresholding, and other methods to attempt BC, BC-PO, and MC-F. In the scope of real world applications, we see unsupervised as a much more realistic approach as it assumes little to no information apriori.
+
+### Unsupervised Learning models
+
+#### Classification in Semantic Space
+Given that each document can be represented as some n-dimensional vector, it becomes reasonable for us to consider similarities and distances as measaurements for class membership. Consider the MC-PO example, where we have 10 class labels whose papers are distributed in the semantic space. Assume that we could approximate an ideal vector for representing this class, obtained in practice through domain expert descriptions or even as we show with simply the titles of the labels themselves. Using these label vectors, we minimize the inverse cosine similarity or the euclidian distance to assign a class to each of the unlabelled data points.
+
+#### *LDA*
+LDA (Latent Dirichlet Allocation) is an unsupervised learning method that is based on treating each document as a mixture of topics and each topic as a mixture of words. At a high level the method updates the probability of a word being assigned to a topic and a document being assigned to a topic.  Two required hyperparameters for this model are alpha which specifies the level of topic mixtures that should be present in a documents' classification, and beta which represents the amount of words that should be used in a topic. The number of topics also needs to be specified before running the model. This model is implemented over the text abstracts to see if topics are distinguishable. Since it is known that there are 11 labels, LDA can be tested to see if it can separate out the document into 11 classes. This method can validate how distinguishable 11 classes are. LDA can also be used for dimensionality reduction. Since each abstract is assigned a probability of belonging to each class, the distribution over the number of classes can represent an engineered feature of the abstract. The dimensionality of this feature is the number of topics chosen.
+
+#### *K-means*
+The K-means algorithm uses Euclidean distance to measure the closeness between data points and pre-defined number of clusters. Similar to LDA's use case above, this model is useful in the analysis since the number of clusters can be chosen to represent the expected number of clusters in the dataset. Given that word vectors are used as the input data, K-means' centroid output could be used to represent centered word vectors for each cluster. These centered word vectors could be useful in mapping pre-defined topic summary word vectors to the closest center word vector from K-means. This process can lead to a semi-supervised approach to automatic labeling of K-means' cluster output.
+
+#### *Gaussian Mixture Model*
+To further test the separability of the training samples, Gaussian Mixture Models can be used to determine if different shaped decision boundaries are more appropriate for separating the dataset. Since K-means is Euclidean distance based, its decision boundaries will be spherical. However, Gaussian Mixture Models will have decision boundaries representing the shape of the respective distribution leading to different ellipse shaped decision boundaries. Sillhouette scores will be used to compare K-means and Gaussian Mixture Models to see which one performs best.
+
+
+
+
 
 ## **Results**
 ### **Unsupervised Learning**
@@ -168,28 +186,47 @@ These 2d and 3d visualizations are intended to represent a projection from the h
 
 #### **D. Language Model Comparison**
 
-In order to understand the importance of the feature space we choose from various language models, we look at a baseline classification model, support vector machine for classification with rbf kernel, and compare the train and test (33% of the dataset) accuracies.
+In order to understand the importance of the feature space we choose from various language models, we look at a baseline classification model, support vector machine for classification with rbf kernel, and compare the train and test (33% of the dataset) accuracies. We will explore optimizing the supervised techniques later, but let this serve as a comparison of each language models expressiveness.
 
 - *MC-F (Multiclass Classification - Full)*
 
 | Language Model | Training Accuracy | Testing Accuracy |
 |---|---|---|
-| BOW | 0.84462 | 0.22177 |
-| Trained Word2Vec | 0.39047 | 0.25603 |
-| GloVe | 0.88333 | 0.37198 |
-| Fine-tuned GloVe | 0.87857 | 0.37681 |
+| BOW | 0.7569 | 0.4968 |
+| CustomWord2Vec 13d | 0.6323 | 0.5908 |
+| CustomWord2Vec 50d | 0.6364 | 0.5824 |
+| GLOVE | 0.8959 | 0.6492 |
+| Finetuned GLOVE | 0.8970 | 0.6388 |   
+| BERT | 0.9134 | 0.6492 |
+| SCIBERT | **0.9165** | **0.6805** |     
+
+
+- *MC-PO (Multiclass Classification - Positive Only)*
+
+| Language Model | Training Accuracy | Testing Accuracy |
+|---|---|---|
+| BOW | 0.8446 | 0.2217 |
+| CustomWord2Vec 13d | 0.3944 | 0.2661 |
+| CustomWord2Vec 50d | 0.4342 | 0.2903 |
+| GLOVE | 0.9083 | 0.3991 |
+| Finetuned GLOVE | 0.9083 | 0.3991 |   
+| BERT | 0.9043 | 0.4153 |
+| SCIBERT | **0.9143** | **0.4435** |
 
 
 - *BC (Binary Classification)*
 
 | Language Model   | Training Accuracy | Testing Accuracy |
 |------------------|-------------------|------------------|
-| BOW              | 0.98249           | 0.77870          |
-| Trained Word2Vec | 0.91324           | 0.93475          |
-| GloVe            | 0.98650           | 0.94292          |
-| Fine-tuned GloVe | 0.98650           | 0.94063          |
+| BOW | 0.9824 | 0.7787 |
+| CustomWord2Vec 13d | 0.9320 | 0.9206 |
+| CustomWord2Vec 50d | 0.9361 | 0.9311 |
+| GLOVE | 0.9886 | 0.9394 |
+| Finetuned GLOVE | 0.9907 | 0.9415 |   
+| BERT | 0.9938 | 0.9478 |
+| SCIBERT | **0.9979** | **0.9749** |
 
-We see that GloVe-based models seem to provide the most separability to the data in both problems. 
+We see that SciBERT seem to provide the most separability to the data in all tasks. 
 
 #### Model accuracies for classification
 
