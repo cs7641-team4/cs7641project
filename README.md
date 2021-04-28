@@ -419,7 +419,7 @@ In this project, we demonstrated the feasibility of automatically detecting the 
 | Class11 | Negative Samples         |                                                                                                                                              |
 
 ### **C. Contributions**
-- Ryan Cooper:
+- Ryan Cooper: Data pipeline setup, language model implementations, finetuning GloVe, unsupervised classification, labelling data
 - Johnny Nguyen: Create framework for supervised learning testing, integrate SMOTE into the data, manually label data, 
 - Rhythm Syed:
 - Hamna Khan:
