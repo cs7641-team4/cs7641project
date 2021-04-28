@@ -188,11 +188,12 @@ These 2d and 3d visualizations are intended to represent a projection from the h
 
 - *BERT*
 
-<!-- TODO: Ryan -->
+<img src="figures/bert_3d.png" alt=""/>
+
 
 - *SciBERT*
 
-<!-- TODO: Ryan -->
+<img src="figures/scibert_3d.png" alt=""/>
 
 
 #### **G. Language Model Comparison**
