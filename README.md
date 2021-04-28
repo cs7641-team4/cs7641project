@@ -196,7 +196,6 @@ These 2d and 3d visualizations are intended to represent a projection from the h
 <img src="figures/scibert_3d.png" alt=""/>
 
 
-
 #### **G. Language Model Comparison**
 
 In order to understand the importance of the feature space we choose from various language models, we look at a baseline classification model, support vector machine for classification with rbf kernel, and compare the train and test (33% of the dataset) accuracies. We will explore optimizing the supervised techniques later, but let this serve as a comparison of each language models expressiveness.
@@ -336,6 +335,20 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 | Bagging Classifier           | 'BaggingClassifier': {'base_estimator': [SVC()], 'n_estimators': [10], 'random_state': [0]}                                                                         | {'base_estimator': SVC(), 'n_estimators': 10, 'random_state': 0}                                                   | 0.30344827586206896    |
 | Gradient Boosting Classifier | {'learning_rate': [0.1, 0.2, 0.5], 'n_estimators': [100, 500, 1000], 'max_depth': [3, 9, 15]}                                                                       | {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 500, 'n_iter_no_change': 5}                                 | 0.43448275862068964    |
 
+- *Models with SCIBERT Embeddings*
+
+| Model | MC-F | MC-PO Unbalanced | MC-PO Balanced | BC | 
+|---|---|---|---|---|
+| SVM | **0.6862** | 0.4333 | **0.4266** | 0.9586 |
+| Logistic Regression | 0.6931 | **0.4600** | 0.3733 | 0.9655 |
+| Decision Tree | 0.5689 | 0.2466 | 0.1600 | 0.8655 |
+| Random Forest | 0.6379 | 0.3866 | 0.2933 | 0.9413 |
+| MLP | 0.6793 | 0.4333 | 0.3866 | 0.9551 |
+| AdaBoost | 0.5689 | 0.2733 | 0.2133 | 0.9482 |
+| Naive Bayes | 0.6551 | 0.4200 | 0.3733 | 0.9448 |
+| Bagging Classifier | 0.6689 | 0.3933 | 0.4266 | **0.9689** |
+
+
 ## **Discussion**
 ### **Language Models**
 
@@ -353,7 +366,7 @@ It is shown that the unsupervised models' output can act as engineered features 
 A semi-supervised approach for labeling unsupervised cluster outputs is developed and acceptable performance on binary classification tasks with an accuracy of 87.03%. The strength of this method is that only 5 abstracts need to be collected as being representative of a topic in order for classification of future abstracts to be performed. This decrease in data collection allows the model to be more flexible in the way it can be distributed and generalized on different research paper separation tasks. Although this method does not perform as highly as the supervised models, it is still recommended to use in situations where lengthy data collection would be difficult.
 
 <!-- TODO: Talk about real world workflow, results from unsupervised classification -->
-As an extension of the semi-supervised method, an approach involving direct distance calculations between the topic summary word vectors and each abstract's word vectors is implemented. Both Euclidean and inverse cosine similarity distances are used to compare abstracts directly with the topic summaries. The topic summaries use either the top 5 abstracts for each class as described in the semi-supervised approach or the class descriptions directly which can be seen in Appendix B. Each of these methods are performed on each language model built. The results show that the greatest binary classification is with SCIBERT at 0.9110 using inverse cosine similarity and the semi-supervised topic summary approach. The greatest multi classification is also with SCIBERT at 0.58 using Euclidean distance and semi-supervised topics. The greatest multi classification excluding negatives samples is with SCIBERT at 0.34 using inverse cosine similarity and semi-supervised topics. Overall it is observed that the semi-supervised topic summaries perform better than the direct class descriptions. The class descriptions only achieve its highest accuracy at 0.74 for binary classification. The benefit of the class descriptions is that it uses the least amount of data collection besides collecting a predefined list of topics for a conference. This method could be useful in situations where the research conference wants a very quick approach in binary classification. However, if more accuracy is desired the conference could provide 5 abstracts that they think are representative of a topic in the conference and then the semi-supervised approach could be used.
+As an extenstion of the semi-supervised method, an approach involving direct distance calculations between the topic summary word vectors and each abstract's word vectors is implemented. Both Euclidean and inverse cosine similarity distances are used to compare abstracts directly with the topic summaries. The topic summaries use either the top 5 abstracts for each class as described in the semi-supervised approach or the class descriptions direclty which can be seen in Appendix B. Each of these methods are performed on each language model built. The results show that the greatest binary classification is with SCIBERT at 0.9110 using inverse cosine similarity and the semi-supervised topic summary approach. The greatest multi classification is also with SCIBERT at 0.58 using Euclidean distance and semi-supervised topics. The greatest multi classification excluding negatives samples is with SCIBERT at 0.34 using inverse cosine similarity and semi-supervised topics.
 
 ### **Supervised Learning**
 
@@ -407,7 +420,7 @@ In this project, we demonstrated the feasibility of automatically detecting the 
 
 ### **C. Contributions**
 - Ryan Cooper:
-- Johnny Nguyen:
+- Johnny Nguyen: Create framework for supervised learning testing, integrate SMOTE into the data, manually label data, 
 - Rhythm Syed:
 - Hamna Khan:
 - Evan Downs:
