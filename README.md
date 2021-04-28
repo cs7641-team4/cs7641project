@@ -422,7 +422,7 @@ It is also important to note the bias present in the labeled dataset. This datas
 
 ### **C. Contributions**
 - Ryan Cooper: Data pipeline setup, language model implementations, finetuning GloVe, unsupervised classification, labelling data
-- Johnny Nguyen: Create framework for supervised learning testing, integrate SMOTE into the data, manually label data, 
+- Johnny Nguyen: Create framework for supervised learning testing, integrate SMOTE into the data, hyperparamter tuning, manually label data 
 - Rhythm Syed: Multi-model grid search & cross validation training pipeline, data labeling, evaluation metrics, confusion matrices, classification reports, Feedforward DL model with PyTorch
 - Hamna Khan: - Manual data labeling (x2), supervised learning models, integrating language model into supervised model, reporting supervised results /discussions
 - Evan Downs: Data pre-processing, LDA, Custom Word2vec, K-means, GMM, Semi-supervised K-means, topic summaries through cosine similarity and top 5 abstract approach
