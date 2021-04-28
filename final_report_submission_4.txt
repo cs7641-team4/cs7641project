@@ -1,0 +1,6 @@
+4
+5
+Cuong Nguyen,Evan Downs,Hamna Khan,Muhtadyuzzaman Syed,Ryan Cooper
+Towards a Machine Learning-based framework for Academic Paper Pre-evaluation
+https://drive.google.com/file/d/1xbt7dtGSqW43dQxXWufxHTsYj_rDfK9o/view
+https://github.com/cs7641-team4/cs7641project
