@@ -340,7 +340,7 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 | Model | MC-F | MC-PO Unbalanced | MC-PO Balanced | BC | 
 |---|---|---|---|---|
 | SVM | **0.6862** | 0.4333 | **0.4266** | 0.9586 |
-| Logistic Regression | 0.6931 | **0.4600** | 0.3733 | 0.9655 |
+| Logistic Regression | **0.6931** | **0.4600** | 0.3733 | 0.9655 |
 | Decision Tree | 0.5689 | 0.2466 | 0.1600 | 0.8655 |
 | Random Forest | 0.6379 | 0.3866 | 0.2933 | 0.9413 |
 | MLP | 0.6793 | 0.4333 | 0.3866 | 0.9551 |
@@ -425,4 +425,4 @@ It is also important to note the bias present in the labeled dataset. This datas
 - Johnny Nguyen: Create framework for supervised learning testing, integrate SMOTE into the data, manually label data, 
 - Rhythm Syed: Multi-model grid search & cross validation training pipeline, data labeling, evaluation metrics, confusion matrices, classification reports, Feedforward DL model with PyTorch
 - Hamna Khan:
-- Evan Downs:
+- Evan Downs: Data pre-processing, LDA, Custom Word2vec, K-means, GMM, Semi-supervised K-means, topic summaries through cosine similarity and top 5 abstract approach
