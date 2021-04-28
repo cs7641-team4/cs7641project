@@ -379,6 +379,8 @@ The more complex task of multiclass classification yielded lower results, as exp
 ## **Conclusion**
 In this project, we demonstrated the feasibility of automatically detecting the topic of an academic paper based on its topic. Using unsupervised language models such as GloVE and BERT, we showed that there is significant linear seperability of embeddings between in-conference samples and out-of-conference samples. Using supervised methods, we have shown that a Multi-Layered Perceptron classifier trained on only around 1000 abstracts can distinguish between in-conference papers and out-of-conference papers with a 95% accuracy rate. Future work could be done to improve accuracy of multi-class classification to achieve more promising topic classification of papers. 
 
+It is also important to note the bias present in the labeled dataset. This dataset was labeled by hand by the members of the group who are not domain experts in the research field.  Therefore, there could easily be mistakes in assigning abstracts to topics. Sometimes the assignment appears subjective as well and each group member introduces their own interpretation when topic assignment is unclear. These mistakes pose a potential barrier in further improving the performance of multi-class labeling.  In the future, it would be beneficial to create a more robust labeled dataset from experts in the research field of interest in order to reduce potential mislabeling. 
+
 ## References
  
 [1] Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K., “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding”, <i>arXiv e-prints</i>, 2018.
