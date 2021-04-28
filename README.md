@@ -339,7 +339,7 @@ Beginning with the BC task, which encodes whether or not a paper is included in 
 
 | Model | MC-F | MC-PO Unbalanced | MC-PO Balanced | BC | 
 |---|---|---|---|---|
-| SVM | **0.6862** | 0.4333 | **0.4266** | 0.9586 |
+| SVM | 0.6862 | 0.4333 | **0.4266** | 0.9586 |
 | Logistic Regression | **0.6931** | **0.4600** | 0.3733 | 0.9655 |
 | Decision Tree | 0.5689 | 0.2466 | 0.1600 | 0.8655 |
 | Random Forest | 0.6379 | 0.3866 | 0.2933 | 0.9413 |
